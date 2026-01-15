@@ -1,0 +1,7 @@
+streamlit
+pypdf
+spacy
+langchain
+langchain-ollama
+langchain_openai
+chatopenaipip
