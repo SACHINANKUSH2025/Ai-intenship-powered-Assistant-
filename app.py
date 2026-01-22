@@ -10,19 +10,28 @@ st.set_page_config(
     layout="centered"
 )
 
-# ---------------- CUSTOM CSS ----------------
 st.markdown("""
 <style>
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* Global */
+html, body, [class*="css"] {
+    font-family: 'Poppins', sans-serif;
+}
+
 /* Main background */
 .stApp {
-    background-color: #87CEEB; /* Sky Blue */
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
     color: white;
 }
 
 /* Sidebar */
 [data-testid="stSidebar"] {
-    background-color: #5dade2; /* Darker sky blue */
-    color: white;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-right: 1px solid rgba(255,255,255,0.2);
 }
 
 /* Sidebar text */
@@ -30,41 +39,86 @@ st.markdown("""
     color: white;
 }
 
+/* Title */
+h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0.2em;
+}
+
+h2, h3 {
+    font-weight: 600;
+}
+
+/* Card-style containers */
+.css-1r6slb0, .css-12w0qpk {
+    background: rgba(255,255,255,0.18);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    backdrop-filter: blur(10px);
+}
+
+/* File uploader */
+[data-testid="stFileUploader"] {
+    background: rgba(255,255,255,0.18);
+    border-radius: 12px;
+    padding: 15px;
+}
+
+/* Inputs */
+input, textarea {
+    border-radius: 10px !important;
+    border: none !important;
+    padding: 10px !important;
+    font-size: 15px !important;
+}
+
 /* Buttons */
 .stButton > button {
-    background-color: white;
-    color: #1f2937;
-    border-radius: 10px;
-    padding: 0.6em 1.2em;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: white;
+    border-radius: 12px;
+    padding: 0.7em 1.6em;
     font-size: 16px;
-    font-weight: bold;
-    transition: all 0.3s ease;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
 }
 
 /* Button hover */
 .stButton > button:hover {
-    background-color: #2563eb;
-    color: white;
-    transform: scale(1.05);
-}
-
-/* Inputs & text areas */
-input, textarea {
-    border-radius: 8px !important;
-    color: black !important;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
 }
 
 /* Labels */
 label {
-    color: white !important;
+    font-weight: 500;
+    color: #f1f5f9 !important;
 }
 
-/* Headings */
-h1, h2, h3 {
-    color: white;
+/* JSON output */
+pre {
+    background: rgba(0,0,0,0.35) !important;
+    border-radius: 12px;
+    padding: 15px;
 }
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(#00c6ff, #0072ff);
+    border-radius: 10px;
+}
+
 </style>
 """, unsafe_allow_html=True)
+
 
 
 # ---------------- TITLE ----------------
@@ -80,14 +134,14 @@ menu = st.sidebar.selectbox(
 st.sidebar.markdown("---")
 
 # ---------------- TEAM INFO ----------------
-st.sidebar.markdown("### 👥 Project Team")
+st.sidebar.markdown("### 👨‍💻 Meet Our Developers")
 st.sidebar.markdown("""
   
 **Team Members:** 
-- Sachin Ankush  
+- Sachin Ankush
+- Aditya Nagargoje  
 - Krishana Patil  
 - Kamna Wagh
-- Aditya Nagargoje 
 - Aniket Mundhe 
 """)
 
@@ -113,3 +167,5 @@ elif menu == "Skill Gap Analysis" and resume:
     if st.button("📊 Analyze Skills"):
         result = skill_gap_analysis(resume, job_desc)
         st.json(result)
+
+
