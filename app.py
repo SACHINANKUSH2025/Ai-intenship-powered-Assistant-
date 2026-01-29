@@ -1,4 +1,5 @@
 import streamlit as st
+from auth import auth_page
 from resume_feedback import resume_feedback
 from cover_letter import generate_cover_letter
 from mock_interview import mock_interview
@@ -9,6 +10,22 @@ st.set_page_config(
     page_title="AI Internship Assistant",
     layout="centered"
 )
+# Session init
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
+
+# 🔒 Login Gate
+if not st.session_state.logged_in:
+    st.title("🎓 AI-Powered Internship Assistant")
+    auth_page()
+    st.stop()
+
+# ✅ After Login
+st.sidebar.success(f"Welcome {st.session_state.user}")
+
+if st.sidebar.button("Logout"):
+    st.session_state.logged_in = False
+    st.rerun()
 
 st.markdown("""
 <style>
@@ -140,7 +157,7 @@ st.sidebar.markdown("""
 **Team Members:** 
 - Sachin Ankush
 - Aditya Nagargoje  
-- Krishana Patil  
+- Krishna Patil  
 - Kamna Wagh
 - Aniket Mundhe 
 """)

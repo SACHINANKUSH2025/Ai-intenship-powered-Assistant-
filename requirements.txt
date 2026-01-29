@@ -2,7 +2,4 @@ streamlit
 pypdf
 spacy
 langchain
-langchain-ollama
-langchain
 langchain-openai
-ollama

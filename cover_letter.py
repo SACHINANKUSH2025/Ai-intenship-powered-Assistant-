@@ -1,7 +1,6 @@
 from langchain_ollama import OllamaLLM
 from utils import extract_text_from_pdf
 
-# Correct instantiation
 llm = OllamaLLM(model="mistral")
 
 def generate_cover_letter(pdf, job_desc):
