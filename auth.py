@@ -95,7 +95,6 @@ def auth_page():
     else:
         signup()
 
-git v
 
 
 
